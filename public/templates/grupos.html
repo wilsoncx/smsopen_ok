@@ -1,0 +1,66 @@
+<h4 class="blog-post-title">Lista grupos</h4>
+<hr/>
+<button type="button" class="btn btn-danger fa fa-plus" ng-click="open(grupo);">&nbsp;Adiconar novo grupo</button>
+
+<div class="table-responsive">
+<div class="panel panel-primary">
+  <div class="panel-heading">Lista de grupos
+      <div class="sw-search" >
+            <div class="nav-search" id="nav-search">
+                    Busca: <span class="input-icon">
+                        <input placeholder="Encontre um grupo" class="nav-search-input" ng-model="filtergrupo" ng-change="resetLimit();"  autocomplete="off" type="text" style="width:300px;" focus>
+                        <i class="search-icon fa fa-search nav-search-icon"></i>
+                    </span>
+            </div>
+        </div>
+    </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+    <tr ng-show="grupos.length==0"><td style="vertical-align:middle;"><i class="fa fa-ban fa-3x"></i>&nbsp;Dados não encontrado</td></tr>
+    <tr ng-hide="grupos.length>-1"><td style="vertical-align:middle;"><i class="fa fa-cog fa-3x fa-spin"></i>&nbsp;Loading</td></tr>
+
+    <tr><th ng-repeat="g in columns">{{g.text}}</th></tr>
+
+    <tr ng-repeat="g in grupos | filter:filtergrupo | orderBy:'-id'" id="{{g.id}}" animate-on-change='g.nome' ng-animate=" 'animate'">
+        <td>{{g.id}}</td><td>{{g.nome}}
+          <div ng-show="showDetails">
+            <table class="table table-striped">
+              <tr><th>
+                <div>
+                 <angucomplete id="buscacliente"
+                 placeholder="Procurar clientes"
+                 pause="50"
+                 selectedobject="cl"
+                 localdata="cliente"
+                 searchfields="nome"
+                 titlefield="id,nome"
+                 minlength="1"
+                 inputclass="form-control form-control-small"/>
+               </div>
+              </th><th><button type="button" class="btn btn-success fa fa-save"  ng-click="scliente((g),(cl));"></button>
+</th></tr>
+
+              <tr><th>>----Clientes----<</th><th>Remover</th></tr>
+              <tr ng-repeat = "c in g.cliente"><td>{{c.nome}}</td><td><button type="button" class="btn btn-danger fa fa-trash-o" ng-click="rmCliente((g),(c));"></button></td></tr>
+            </table>
+          </div>
+        </td>
+        <td>
+            <button class="btn" ng-class="{Ativo:'btn-success', Inativo:''}[g.status]" ng-click="changegrupoStatus(g);">{{g.status}}</button>
+        </td>
+        <td style="width:140px">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default fa fa-group" ng-click="showDetails = ! showDetails"></button>
+              <button type="button" class="btn btn-default fa fa-edit" ng-click="open(g);"></button>
+              <button type="button" class="btn btn-danger fa fa-trash-o" ng-click="deletegrupo(g);"></button>
+            </div>
+        </td>
+
+
+
+    </tr>
+    </table>
+
+</div>
+</div>
+</div>

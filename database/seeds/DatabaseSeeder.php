@@ -1,0 +1,42 @@
+<?php
+
+use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
+
+class DatabaseSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Model::unguard();
+
+        $this->call(CriarUser::class);
+
+        Model::reguard();
+    }
+}
+
+
+class CriarUser extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+
+            DB::table('users')->insert([
+              'nome' => "open.slz",
+              'email' => 'open.slz@gmail.com',
+              'senha' => bcrypt('acqwp'),
+              'fone' =>  '9881544593',
+
+          ]);
+    }
+}
