@@ -28,7 +28,7 @@ class User extends Model implements AuthenticatableContract,
          return $this->belongsTo('App\Grupo_usuario');
      }
 
-     
+
     public function empresa()
     {
         return $this->belongsTo('App\Empresa');
@@ -41,12 +41,18 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $table = 'users';
 
+
+    //Primary Key da Tabela.
+    protected $primaryKey = 'id';
+
+    public  $timestamps   = false;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['nome', 'email', 'senha'];
+    protected $fillable = ['id','nome', 'email', 'senha', 'empresa_id'];
 
     /**
      * The attributes excluded from the model's JSON form.

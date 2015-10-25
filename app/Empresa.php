@@ -45,7 +45,11 @@ public function grupos()
    *
    * @var string
    */
-  protected $table = 'empresas';
+   protected $table      = 'empresas';
+
+   //Primary Key da Tabela.
+   protected $primaryKey = 'id';
+
 
 
   /**
@@ -53,7 +57,7 @@ public function grupos()
    *
    * @var array
    */
-  protected $fillable = ['razao', 'telefone', 'endereco', 'cidade', 'uf', 'cnpj','qsms', 'ativo'];
+  protected $fillable = ['id','razao', 'telefone', 'endereco', 'cidade', 'uf', 'cnpj','qsms', 'ativo'];
 
   /**
    * The attributes excluded from the model's JSON form.

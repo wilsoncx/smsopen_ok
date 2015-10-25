@@ -33,6 +33,23 @@ Route::group(['prefix' => 'api'], function()
     Route::delete('{id}/{cl}', 'GrupoController@rmCliente');
 
   });
+  Route::group(['prefix' => 'usuarios'], function()
+  {
+    Route::get('', 'UsuarioController@index');
+    Route::post('', 'UsuarioController@store');
+    Route::put('{id}', 'UsuarioController@edit');
+  });
+
+  Route::group(['prefix' => 'empresas'], function()
+  {
+    Route::get('', 'EmpresaController@index');
+
+  });
+  Route::group(['prefix' => 'msg'], function()
+  {
+    Route::post('{c}/{n}', 'MensagemController@enviar');
+
+  });
 
 });
 Route::get('/', function () {

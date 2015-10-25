@@ -1,8 +1,13 @@
 app.controller('gruposCtrl', function ($scope, $filter, $modal, Data, $http) {
     $scope.grupo = {};
-    $http.get('api/grupos').then(function(data){
-        $scope.grupos = data.data;
-    });
+    function carregarGrupos(){
+
+      $http.get('api/grupos').success(function (data) {
+              $scope.grupos = data;
+            }).error(function (data, status) {
+              $scope.message = "Aconteceu um problema: " + data;
+      });
+    };
     $scope.cliente = {};
     $http.get('api/clientes').then(function(cdata){
         $scope.cliente = cdata.data;
@@ -21,6 +26,7 @@ app.controller('gruposCtrl', function ($scope, $filter, $modal, Data, $http) {
     $scope.scliente = function(grupo,cl){
       if(confirm("Você vai adicionar o cliente " + cl.originalObject.nome +   " ao grupo " + grupo.nome)){
         Data.post("grupos/"+grupo.id+"/"+cl.originalObject.id)
+        carregarGrupos();
       };
 
   };
@@ -60,7 +66,7 @@ app.controller('gruposCtrl', function ($scope, $filter, $modal, Data, $http) {
                     {text:"Status",predicate:"status",sortable:true},
                     {text:"Ação",predicate:"",sortable:false}
                 ];
-
+carregarGrupos();
 });
 
 

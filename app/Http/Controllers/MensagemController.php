@@ -11,6 +11,16 @@ use App\Mensagen;
 class MensagemController extends Controller
 {
 
+  public function enviar($celular,$nome)
+  {
+    $texto = "http://torpedus.com.br/sms/index.php?app=push&rest=private&u=9433&p=808745&to=$celular&msg=$nome";
+    $chsaida = curl_init($texto);
+    curl_setopt($chsaida, CURLOPT_RETURNTRANSFER,true);
+    curl_exec($chsaida);
+    var_dump($chsaida);
+
+  }
+
 
     public function last($n=3){
       return Mensagen::select('id', 'data','fone', 'cliente_id')

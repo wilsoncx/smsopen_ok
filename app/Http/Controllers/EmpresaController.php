@@ -9,7 +9,9 @@ use App\Http\Controllers\Controller;
 use App\Empresa;
 
 class EmpresaController extends Controller
+
 {
+
 
   public function getAll()
   {
@@ -26,10 +28,12 @@ class EmpresaController extends Controller
      *
      * @return Response
      */
-    public function index()
-    {
-        //
-    }
+     public function index()
+     {
+       return Empresa::select('id', 'razao','telefone','qsms','status')
+       ->orderBy('id', 'desc')
+       ->get();
+       }
 
     /**
      * Show the form for creating a new resource.

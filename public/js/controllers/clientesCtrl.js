@@ -1,9 +1,11 @@
 app.controller('clientesCtrl', function ($scope, $filter, $modal, Data, $http) {
-    $scope.cliente = {};
-    $http.get('api/clientes').then(function(data){
-        $scope.clientes = data.data;
-    });
-
+  function carregarClientes(){
+    $http.get('api/clientes').success(function (data) {
+            $scope.clientes = data;
+          }).error(function (data, status) {
+            $scope.message = "Aconteceu um problema: " + data;
+          });
+        };
     $scope.grupo = {};
     $http.get('api/grupos').then(function(gdata){
         $scope.grupos = gdata.data;
@@ -20,10 +22,10 @@ app.controller('clientesCtrl', function ($scope, $filter, $modal, Data, $http) {
         }
 };
         $scope.sgrupo = function(cliente,grupo){
-          Data.post("clientes/"+cliente.id+"/"+grupo.id)
-          $scope.cliente.grupo.push(grupo);
           confirm("Você vai adicionar um grupo !!");
-
+          Data.post("clientes/"+cliente.id+"/"+grupo.id)
+          delete $scope.clientes;
+          carregarClientes();
     };
     $scope.open = function (p,size) {
         var modalInstance = $modal.open({
@@ -57,7 +59,7 @@ app.controller('clientesCtrl', function ($scope, $filter, $modal, Data, $http) {
                     {text:"Status",predicate:"status",sortable:true},
                     {text:"Ação",predicate:"",sortable:false}
                 ];
-
+carregarClientes();
 });
 
 

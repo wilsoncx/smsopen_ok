@@ -11,12 +11,7 @@ use App\Cliente;
 class ClienteController extends Controller
 {
 
-  public function last(){
-    return Cliente::select('id', 'nome','celular', 'email', 'status')
-    ->orderBy('id', 'desc')
-    ->get();
-    throw new \Exception("Esta é uma exceção de teste");
-    }
+
 
 public function addGrupo($cliente_id, $grupo_id){
   Cliente::find($cliente_id)

@@ -8,6 +8,10 @@ class Mensagen extends Model
 {
   protected $table = 'mensagens';
 
+  protected $primaryKey = 'id';
+
+  public  $timestamps   = false;
+
   /**
    * Relacionamento com tabelas.
    */

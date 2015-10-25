@@ -40,7 +40,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#/mensagens">Enviar SMS<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="#/msg">Enviar SMS<span class="sr-only">(current)</span></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastros <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -51,7 +51,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administração<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#/users">Usuários</a></li>
+            <li><a href="#/usuarios">Usuários</a></li>
             <li><a href="#/grupo_usuarios">Grupos de Usuarios</a></li>
           </ul>
         </li>
@@ -72,6 +72,7 @@
 
 </html>
 <!-- Libraries -->
+<script src="bower_components/js/jquery.min.js"></script>
 <script src="bower_components/js/angular.min.js"></script>
 <script src="bower_components/js/ui-bootstrap-tpls-0.11.2.min.js"></script>
 <script src="bower_components/js/angular-route.min.js"></script>
@@ -84,13 +85,17 @@
 <script src="js/services/directives.js"></script>
 <script src="js/controllers/clientesCtrl.js"></script>
 <script src="js/controllers/gruposCtrl.js"></script>
+<script src="js/controllers/usuariosCtrl.js"></script>
+<script src="js/controllers/envioSmsCtrl.js"></script>
+
+
 
 
 <!-- Some Bootstrap Helper Libraries -->
 
-<script src="bower_components/js/jquery.min.js"></script>
 <script src="bower_components/angucomplete/angucomplete.js"></script>
-<script src="bower_components/js/bootstrap.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2015.3.930/js/kendo.all.min.js">
+</script><script src="bower_components/js/bootstrap.min.js"></script>
 <script src="bower_components/js/underscore.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="bower_components/js/ie10-viewport-bug-workaround.js"></script>
