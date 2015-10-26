@@ -1,0 +1,45 @@
+<div class="col-xs-6 col-md-8">
+  <h4 class="blog-post-title">Envio de SMS</h4>
+  <hr/>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <textarea class="form-control" rows="3" name="msg" ></textarea>
+      <div class="radio">
+        <label>
+          <input type="radio" name="optsms" id="op" value="opsms" checked>
+        Enviar  Clientes
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="optsms" id="op" value="opsms">
+          Enviar Grupos
+        </label>
+      </div>
+      <angucomplete id="buscacliente"
+      placeholder="Procurar clientes"
+      pause="50"
+      selectedobject="cl"
+      localdata="clientes"
+      searchfields="nome,celular"
+      titlefield="nome"
+      descriptionfield="celular"
+      minlength="1"
+      inputclass="form-control form-control-small"/>
+    </th><th><button type="button" class="btn btn-success fa fa-save"  ng-click="adicionarCliente(cl);"></button>
+    </div>
+    <table class="table">
+    <tr>
+      <td>Nome</td><td>Celular</td>
+    </tr>
+    <tr ng-repeat="ps in pselect">
+      <td>{{ps.nome}}</td><td>{{ps.celular}}</td>
+    </tr>
+    <div class="btn-group">
+      <button type="button" class="btn btn-danger fa fa-save" ng-click="scliente(pselect);"></button>
+    </div>
+    </table>
+
+  </div>
+</div>

@@ -21,7 +21,7 @@ function($routeProvider) {
   when('/msg', {
     title: 'Envio de SMS',
     templateUrl: 'templates/envioSms.html',
-    controller: 'envioSmsCtrl'
+    controller: 'enviosmsCtrl'
   })
   .otherwise({
     redirectTo: '/'

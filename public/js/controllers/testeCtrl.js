@@ -1,4 +1,4 @@
-app.controller('enviosmsCtrl', function ($scope, $filter, $http, Data) {
+app.controller('testeCtrl', function ($scope, $filter, $http, Data) {
   function carregarClientes(){
     $http.get('api/clientes').success(function (data) {
   					$scope.clientes = data;
