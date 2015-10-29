@@ -11,13 +11,19 @@ use App\Mensagen;
 class MensagemController extends Controller
 {
 
-  public function enviar($celular,$nome)
+  public function enviar($msg,$celular,$nome)
   {
-    $texto = "http://torpedus.com.br/sms/index.php?app=push&rest=private&u=9433&p=808745&to=$celular&msg=$nome";
+    $explodenome = explode(" ", 	$nome);
+    $primeironome = $explodenome[0];
+    $novamsg = str_replace(" ","+",$msg);
+    $corpomsg = "Sr.".$primeironome."+".$novamsg;
+
+    $texto = "http://torpedus.com.br/sms/index.php?app=push&rest=private&u=9433&p=808745&to=$celular&msg=$corpomsg";
     $chsaida = curl_init($texto);
     curl_setopt($chsaida, CURLOPT_RETURNTRANSFER,true);
     curl_exec($chsaida);
     var_dump($chsaida);
+
 
   }
 

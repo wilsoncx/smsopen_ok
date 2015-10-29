@@ -1,4 +1,4 @@
-var app = angular.module('openApp', ['ngRoute', 'ui.bootstrap', 'ngAnimate', 'angucomplete', 'kendo.directives']);
+var app = angular.module('openApp', ['ngRoute', 'ui.bootstrap', 'ngAnimate', 'angucomplete']);
 
 app.config(['$routeProvider',
 function($routeProvider) {

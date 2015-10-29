@@ -1,4 +1,5 @@
 app.controller('clientesCtrl', function ($scope, $filter, $modal, Data, $http) {
+  $scope.cliente = {};
   function carregarClientes(){
     $http.get('api/clientes').success(function (data) {
             $scope.clientes = data;

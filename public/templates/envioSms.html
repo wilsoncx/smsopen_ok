@@ -3,7 +3,8 @@
   <hr/>
   <div class="panel panel-default">
     <div class="panel-body">
-          <textarea class="form-control" rows="3"></textarea>
+          <textarea class="form-control" rows="3" name="clmsg" ng-model="clmsg"></textarea>
+          Quant. de Carectere: {{clmsg.length}}
           <div class="radio">
             <label>
               <input type="radio" name="optionsRadios" id="optionsClientes"  ng-model="optionsRadios" >
@@ -30,7 +31,6 @@
                 descriptionfield="celular"
                 minlength="1"
                 inputclass="form-control form-control-small"/>
-                  </div>
                 </th>
                 <th>
                 <button type="button" class="btn btn-success"  ng-click="adicionarCliente(cl);"> Adicionar</button></th></tr>
@@ -40,6 +40,11 @@
                   <tr ng-repeat= "pessoa in pselect"><td>{{pessoa.nome}}</td><td>{{pessoa.celular}}</td> </tr>
                 </tbody>
               </table>
+              <div class="panel-footer">
+              <div class="btn-group">
+                <button type="button" class="btn btn-primary" ng-click="scliente((pselect),(clmsg));">Enviar SMS</button>
+              </div>
+            </div>
             </div>
             <div ng-if="optionsRadios" ng-model= "optionsRadios">
               <table class="table table-striped">
@@ -52,24 +57,26 @@
               localdata="grupos"
               searchfields="nome"
               titlefield="nome"
+              descriptionfield="id"
               minlength="1"
               inputclass="form-control form-control-feedback"/>
             </div>
           </th>
           <th>
-           <button type="button" class="btn btn-success"  ng-click="adicionarCliente(gp.originalObject);">Adicionar</button></th></tr>
-              <h3>Lista de Grupos {{gp.originalObject.nome}}</h3>
+           <button type="button" class="btn btn-success"  ng-click="adicionarGrupo(gp.originalObject);">Adicionar</button></th></tr>
+              <h3>Lista de Grupos</h3>
+              <tr><td>Nome</td><td></td> </tr>
              <tbody>
-              <tr ng-repeat= "g in pselect" ng-model = "cli"><td>{{g.nome}}</td><td>{{g.nome}}</td></tr>
+              <tr ng-repeat= "g in pselect"><td>{{g.nome}}</td></tr>
             </tbody>
             </table>
+            <div class="panel-footer">
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary" ng-click="sgrupo((pselect),(clmsg));">Enviar SMS</button>
             </div>
           </div>
-          <div class="panel-footer">
-          <div class="btn-group">
-            <button type="button" class="btn btn-primary" ng-click="scliente(pselect);">Enviar SMS</button>
+            </div>
           </div>
-        </div>
-        </form>
+
       </div>
     </div>

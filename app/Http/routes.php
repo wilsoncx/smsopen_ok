@@ -47,7 +47,7 @@ Route::group(['prefix' => 'api'], function()
   });
   Route::group(['prefix' => 'msg'], function()
   {
-    Route::post('{c}/{n}', 'MensagemController@enviar');
+    Route::post('{m}/{c}/{n}', 'MensagemController@enviar');
 
   });
 

@@ -7,54 +7,45 @@ app.controller('enviosmsCtrl', function ($scope, $filter, $http, Data) {
   				});
   			};
 
+    function carregarGrupos(){
+      $http.get('api/grupos').success(function (data) {
+        $scope.grupos = data;
+      }).error(function (data, status) {
+        $scope.message = "Aconteceu um problema: " + data;
+      });
+    };
         function carregarCli(){
           $scope.pselect=[];
-
         };
         $scope.adicionarCliente = function (x) {
-                console.log(x);
                 $scope.pselect.push({nome: x.title, celular: x.description});
-                console.log($scope.pselect);
-
         };
 
-        $scope.scliente = function(z){
+        $scope.adicionarGrupo = function (gx) {
+                $scope.pselect.push(gx);
+        };
+
+        $scope.scliente = function(z,y){
           for(var i=0;i<z.length;i++) {
-            console.log($scope.pselect[i].celular);
-            console.log($scope.pselect[i].nome);
-          //  Data.post("msg/"+$scope.pselect[i].celular+"/"+$scope.pselect[i].nome)
+          Data.post("msg/"+y+"/"+$scope.pselect[i].celular+"/"+$scope.pselect[i].nome);
             }
-
         };
-        //autocomplete
-        $scope.pesquisar = function(pesquisa){
 
-        		// Se a pesquisa for vazia
-        		if (pesquisa == ""){
 
-        			// Retira o autocomplete
-        			$scope.completing = false;
+        $scope.sgrupo = function(g,h){
+          console.log(g);
+            for (var o = 0; o < g.length; o++){
+              console.log($scope.pselect[o].nome);
+              for(var i = 0;i<$scope.pselect[o].cliente.length;i++) {
+                Data.post("msg/"+h+"/"+$scope.pselect[o].cliente[i].celular+"/"+$scope.pselect[o].cliente[i].nome);
+                }
+            }
+        };
 
-        		}else{
 
-        			// Pesquisa no banco via AJAX
-        			$http.get('api/clientes', { "data" : pesquisa}).
-        	        success(function(data) {
 
-        				// Coloca o autocomplemento
-        				$scope.completing = true;
 
-        				// JSON retornado do banco
-        				$scope.pessoas = data;
-        	        })
-        	        .error(function(data) {
-        				// Se deu algum erro, mostro no log do console
-        				console.log("Ocorreu um erro no banco de dados ao trazer auto-ajuda da home");
-        	        });
-        		}
-        	};
-
-        //----------
         carregarClientes();
-carregarCli();
+        carregarGrupos();
+        carregarCli();
 });

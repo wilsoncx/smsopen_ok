@@ -34,7 +34,7 @@ public function rmCliente($grupo_id, $cliente_id)
        return Grupo::select('id', 'nome','status')
        ->orderBy('id', 'desc')
        ->with(['cliente'=>function($q){
-       $q->select('id','nome');
+       $q->select('id','nome','celular');
           }])
        ->get();
        }
